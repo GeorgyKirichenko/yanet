@@ -1,5 +1,8 @@
 #include <signal.h>
+
+#ifndef NO_SYSTEMD
 #include <systemd/sd-daemon.h>
+#endif
 
 #include <iostream>
 
@@ -58,7 +61,9 @@ int main(int argc,
 		return 3;
 	}
 
+#ifndef NO_SYSTEMD
 	sd_notify(0, "READY=1");
+#endif
 
 	application.start();
 	application.join();

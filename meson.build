@@ -19,6 +19,10 @@ add_global_arguments('-DYANET_VERSION_REVISION=' + get_option('version_revision'
 add_global_arguments('-DYANET_VERSION_HASH=' + get_option('version_hash'), language: 'cpp')
 add_global_arguments('-DYANET_VERSION_CUSTOM=' + get_option('version_custom'), language: 'cpp')
 
+if get_option('no_systemd')
+  add_project_arguments('-DNO_SYSTEMD', language: 'cpp')
+endif
+
 libdpdk = subproject('dpdk', default_options: [
     'platform=generic',
     'cpu_instruction_set=corei7',

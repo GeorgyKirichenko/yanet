@@ -1,5 +1,7 @@
 dependencies = []
-dependencies += dependency('libsystemd')
+if not get_option('no_systemd')
+    dependencies += dependency('libsystemd')
+endif
 dependencies += dependency('threads')
 dependencies += libyanet_fwparser_dep
 dependencies += libyanet_protobuf_dep

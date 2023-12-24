@@ -41,3 +41,9 @@ option('version_custom',
        value: 'develop',
        description: 'Set the custom string version.',
        yield: true)
+
+option('no_systemd',
+       type: 'boolean',
+       value: 'false',
+       description: 'No systemd dependency.',
+       yield: true)

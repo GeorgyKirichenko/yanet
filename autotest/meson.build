@@ -2,6 +2,9 @@ sources = files('autotest.cpp',
                 'main.cpp')
 
 dependencies = []
+if not get_option('no_systemd')
+    dependencies += dependency('libsystemd')
+endif
 dependencies += dependency('yaml-cpp', static: true)
 dependencies += dependency('libpcap', static: true)
 dependencies += dependency('gmock')

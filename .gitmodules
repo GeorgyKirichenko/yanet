@@ -1,0 +1,3 @@
+[submodule "subprojects/dpdk"]
+	path = subprojects/dpdk
+	url = git@github.com:GeorgyKirichenko/dpdk.git

@@ -2,6 +2,7 @@ dependencies = []
 dependencies += dependency('libdpdk', static: true)
 dependencies += dependency('libsystemd')
 dependencies += dependency('threads')
+dependencies += dependency('numa')
 
 sources = files('bus.cpp',
                 'controlplane.cpp',

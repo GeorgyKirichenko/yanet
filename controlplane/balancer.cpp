@@ -68,13 +68,14 @@ inline void setip(common::icp_proto::IPAddr* pAddr, const ip_address_t& value)
 
 inline common::ip_address_t convert_to_ip_address(const common::icp_proto::IPAddr& proto_ipaddr)
 {
-	if (proto_ipaddr.has_ipv4())
+	switch (proto_ipaddr.addr_case())
 	{
-		return common::ipv4_address_t(proto_ipaddr.ipv4());
-	}
-	else
-	{
-		return common::ipv6_address_t((uint8_t*)proto_ipaddr.ipv6().data());
+		case common::icp_proto::IPAddr::AddrCase::kIpv4:
+			return common::ipv4_address_t(proto_ipaddr.ipv4());
+		case common::icp_proto::IPAddr::AddrCase::kIpv6:
+			return common::ipv6_address_t((uint8_t*)proto_ipaddr.ipv6().data());
+		default:
+			throw std::string("internal error: address type is not set");
 	}
 }
 

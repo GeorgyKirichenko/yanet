@@ -1,8 +1,8 @@
 dependencies = []
-dependencies += dependency('libdpdk', static: true)
 dependencies += dependency('libsystemd')
 dependencies += dependency('threads')
 dependencies += dependency('numa')
+dependencies += libdpdk.get_variable('dpdk_dep')
 
 sources = files('bus.cpp',
                 'controlplane.cpp',

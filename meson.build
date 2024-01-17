@@ -69,7 +69,6 @@ subdir('controlplane')
 subdir('cli')
 
 if get_option('target').contains('release')
-    subdir('logger')
     subdir('librib')
 
     install_data('yanet-init.sh',
